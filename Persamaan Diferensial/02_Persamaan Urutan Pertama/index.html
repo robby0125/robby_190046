@@ -1,0 +1,780 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Persamaan Urutan Pertama - Resume Komputasi Numerik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#persamaan-urutan-pertama" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Resume Komputasi Numerik" class="md-header__button md-logo" aria-label="Resume Komputasi Numerik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Resume Komputasi Numerik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Persamaan Urutan Pertama
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Resume Komputasi Numerik" class="md-nav__button md-logo" aria-label="Resume Komputasi Numerik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Resume Komputasi Numerik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Aljabar Linear
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Aljabar Linear" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Aljabar Linear
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Aljabar%20Linear/01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Aljabar%20Linear/02_Aljabar%20Linear%20dengan%20SciPy/" class="md-nav__link">
+        Aljabar Linear dengan SciPy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Aljabar%20Linear/03_Memecahkan%20Sistem%20Linear/" class="md-nav__link">
+        Memecahkan Sistem Linear
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Integrasi Numerik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Integrasi Numerik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Integrasi Numerik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/02_Klasifikasi%20Metode%20Integrasi%20Numerik/" class="md-nav__link">
+        Klasifikasi Metode Integrasi Numerik
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/03_Newton-Cotes/" class="md-nav__link">
+        Metode Newton-Cotes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/04_Romberd/" class="md-nav__link">
+        Metode Romberg
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Persamaan Diferensial
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Persamaan Diferensial" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Persamaan Diferensial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Persamaan Urutan Pertama
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Persamaan Urutan Pertama
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definisi" class="md-nav__link">
+    Definisi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metode-euler" class="md-nav__link">
+    Metode Euler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi" class="md-nav__link">
+    Implementasi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+    <nav class="md-nav" aria-label="Contoh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-eksponensial" class="md-nav__link">
+    Persamaan Eksponensial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-non-linear" class="md-nav__link">
+    Persamaan Non-linear
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-otonom" class="md-nav__link">
+    Persamaan Otonom
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definisi" class="md-nav__link">
+    Definisi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metode-euler" class="md-nav__link">
+    Metode Euler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi" class="md-nav__link">
+    Implementasi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+    <nav class="md-nav" aria-label="Contoh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-eksponensial" class="md-nav__link">
+    Persamaan Eksponensial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-non-linear" class="md-nav__link">
+    Persamaan Non-linear
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persamaan-otonom" class="md-nav__link">
+    Persamaan Otonom
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="persamaan-urutan-pertama">Persamaan Urutan Pertama</h1>
+<p>Disini kita akan menggunakan numpy dan matplotlib, maka sebelum kita mulai, mari kita import kedua package tersebut:</p>
+<pre><code class="language-py">import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+<h2 id="definisi">Definisi</h2>
+<p>Persamaan diferensial adalah persamaan yang melibatkan fungsi <span class="arithmatex">\(y(t)\)</span> yang tidak diketahui (dengan variabel independen <span class="arithmatex">\(t\)</span>) dan turunannya <span class="arithmatex">\(y'\)</span>, <span class="arithmatex">\(y''\)</span>, <span class="arithmatex">\(y'''\)</span>, dll. Urutan persamaan diferensial mengacu pada turunan urutan tertinggi dari fungsi <span class="arithmatex">\(y(t)\)</span> yang tidak diketahui muncul dalam persamaan. Persamaan diferensial berjajar jika bentuknya</p>
+<div class="arithmatex">\[
+a_n(t) y^{(n)} + a_{n_1}(t) y^{(n-1)} + \cdots + a_1(t) y' + a_0(t) y_0 = f(t)
+\]</div>
+<p>di mana <span class="arithmatex">\(a_n, \dots, a_0, f\)</span> adalah fungsi dari variabel independen <span class="arithmatex">\(t\)</span> saja. Misalnya, persamaan</p>
+<div class="arithmatex">\[
+y'' + ty' + y^2 = t
+\]</div>
+<p>adalah urutan kedua non-linear, dan persamaan</p>
+<div class="arithmatex">\[
+y' + ty = t^2
+\]</div>
+<p>adalah linear urutan pertama. Sebagian besar persamaan diferensial tidak mungkin dipecahkan secara eksplisit namun kita selalu dapat menggunakan metode numerik untuk solusi perkiraan.</p>
+<h2 id="metode-euler">Metode Euler</h2>
+<p>Metode numerik paling sederhana untuk mendekati solusi persamaan diferensial adalah metode Euler. Pertimbangkan persamaan diferensial urutan pertama dengan kondisi awal:</p>
+<div class="arithmatex">\[
+y' = f(y,y) \ , \ \ y(t_0)=y_0
+\]</div>
+<p>Prosedur untuk metode Euler adalah sebagai berikut:</p>
+<ol>
+<li>Buat persamaan garis tangen ke fungsi <span class="arithmatex">\(y(t)\)</span> yang tidak diketahui di <span class="arithmatex">\(t=t_0\)</span>:</li>
+</ol>
+<div class="arithmatex">\[
+y = y(t_0) + f(y_0,t_0)(t - t_0)
+\]</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;di mana <span class="arithmatex">\(y'(t_0) = f(y_0,t_0)\)</span> adalah kemiringan <span class="arithmatex">\(y(t)\)</span> di <span class="arithmatex">\(t=t_0\)</span>.</p>
+<ol>
+<li>Gunakan garis tangen untuk memperkirakan <span class="arithmatex">\(y(t)\)</span> pada langkah kecil <span class="arithmatex">\(t_1 = t_0 + h\)</span>.</li>
+</ol>
+<div class="arithmatex">\[
+y_1 = y_0 + f(y_0,t_0)(t_1 - t_0)
+\]</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;di mana <span class="arithmatex">\(y_1 \approx y(t_1)\)</span>.</p>
+<ol>
+<li>Bangun garis tangen pada titik <span class="arithmatex">\((t_1,y_1)\)</span> dan ulangi.</li>
+</ol>
+<p>Rumus untuk metode Euler menentukan urutan rekursif:</p>
+<div class="arithmatex">\[
+y_{n+1} = y_n + f(y_n,t_n)(t_{n+1} - t_n) \ , \ \ y_0 = y(t_0)
+\]</div>
+<p>di mana <span class="arithmatex">\(y_n \approx y(t_n)\)</span> untuk setiap <span class="arithmatex">\(n\)</span>. Jika kita memilih nilai <span class="arithmatex">\(t\)</span> ber spasi yang sama maka rumus menjadi</p>
+<div class="arithmatex">\[
+y_{n+1} = y_n + f(y_n,t_n)h \ \ , \ \ y_0 = y(t_0) \ , \ \ t_n = t_0 + nh
+\]</div>
+<p>dengan langkah waktu <span class="arithmatex">\(h = t_{n+1} - t_n\)</span>.</p>
+<p>Perhatikan dua hal yang sangat penting tentang metode Euler dan metode numerik secara umum:</p>
+<ul>
+<li>Langkah waktu yang lebih kecil <span class="arithmatex">\(h\)</span> mengurangi kesalahan dalam perkiraan.</li>
+<li>Langkah waktu yang lebih kecil <span class="arithmatex">\(h\)</span> membutuhkan lebih banyak komputasi.</li>
+</ul>
+<h2 id="implementasi">Implementasi</h2>
+<p>Mari kita tulis fungsi yang disebut odeEuler yang mengambil 3 parameter input f, y0, dan t di mana:</p>
+<ul>
+<li>f adalah fungsi dari 2 variabel yang mewakili sisi kanan dari persamaan diferensial urutan pertama <span class="arithmatex">\(y' = f(y,t)\)</span>.</li>
+<li>t adalah array 1D NumPy dari nilai <span class="arithmatex">\(t\)</span> di mana kita mendekati nilai <span class="arithmatex">\(y\)</span>.</li>
+<li>y0 adalah nilai awal <span class="arithmatex">\(y(t_0)=y_0\)</span> di mana <span class="arithmatex">\(t_0\)</span> adalah entri pada indeks 0 dari array t.</li>
+</ul>
+<p>Fungsi odeEuler mengembalikan array 1D NumPy dari nilai <span class="arithmatex">\(y\)</span> yang memperkirakan solusi <span class="arithmatex">\(y(t)\)</span> dari persamaan diferensial</p>
+<div class="arithmatex">\[
+y' = f(y,t) \ , \ \ y(t_0)=y_0
+\]</div>
+<p>dengan metode Euler. Perhatikan bahwa kita tidak menentukan nilai langkah waktu <span class="arithmatex">\(h\)</span> Sebagai gantinya, fungsi odeEuler mengambil array nilai <span class="arithmatex">\(t\)</span> dan mengembalikan nilai <span class="arithmatex">\(y\)</span> yang mendekati solusi <span class="arithmatex">\(y(t)\)</span> dengan rumus</p>
+<div class="arithmatex">\[
+y_{n+1} = y_n + f(y_n,t_n)(t_{n+1} - t_n)
+\]</div>
+<pre><code class="language-py">def odeEuler(f,y0,t):
+    '''Perkiraan solusi y'=f(y,t) dengan metode Euler.
+
+    Parameters
+    ----------
+    f : function
+        Sisi kanan persamaan diferensial y'=f(t,y), y(t_0)=y_0
+    y0 : number
+        Nilai awal y(t0)=y0 di mana t0 adalah entri pada indeks 0 dalam array t
+    t : array
+        Array 1D NumPy dari nilai t di mana kita memperkirakan nilai y. Langkah waktu pada setiap iterasi diberikan oleh t[n+1] - t[n].
+
+    Returns
+    -------
+    y : 1D NumPy array
+        Perkiraan y[n] solusi y(t_n) dihitung dengan metode Euler.
+    '''
+    y = np.zeros(len(t))
+    y[0] = y0
+    for n in range(0,len(t)-1):
+        y[n+1] = y[n] + f(y[n],t[n])*(t[n+1] - t[n])
+    return y
+</code></pre>
+<h2 id="contoh">Contoh</h2>
+<h3 id="persamaan-eksponensial">Persamaan Eksponensial</h3>
+<p>Mari kita terapkan metode Euler untuk solusi perkiraan <span class="arithmatex">\(y' = y\)</span> untuk <span class="arithmatex">\(t \in [0,2]\)</span>. Kita tahu solusinya adalah <span class="arithmatex">\(y(t) = e^t\)</span> dalam hal ini dan sehingga kita dapat membandingkan perkiraan dengan metode Euler dengan solusi yang benar.</p>
+<pre><code class="language-py">t = np.linspace(0,2,21)
+y0 = 1
+f = lambda y,t: y
+y = odeEuler(f,y0,t)
+y_true = np.exp(t)
+plt.plot(t,y,'b.-',t,y_true,'r-')
+plt.legend(['Euler','True'])
+plt.axis([0,2,0,9])
+plt.grid(True)
+plt.title(&quot;Solution of $y'=y , y(0)=1$&quot;)
+plt.show()
+</code></pre>
+<p><img alt="Plot Output" src="../assets/diferensial_img0.png" /></p>
+<h3 id="persamaan-non-linear">Persamaan Non-linear</h3>
+<p>Mari kita plot perkiraan <span class="arithmatex">\(y'=y^2\)</span> untuk <span class="arithmatex">\(y(0)=-1\)</span>. Kita tahu solusinya adalah</p>
+<div class="arithmatex">\[
+y(t) = \frac{-1}{t+1}
+\]</div>
+<pre><code class="language-py">t = np.linspace(0,5,16)
+y0 = -1
+f = lambda y,t: y**2
+y = odeEuler(f,y0,t)
+t_true = np.linspace(0,5,100)
+y_true = -1/(t_true + 1)
+plt.plot(t,y,'r.-',t_true,y_true)
+plt.legend(['Euler','True'])
+plt.grid(True)
+plt.axis([0,5,-1,0])
+plt.title(&quot;Solution of $y'=y^2 , y(0)=1$&quot;)
+plt.show()
+</code></pre>
+<p><img alt="Plot Output 2" src="../assets/diferensial_img1.png" /></p>
+<h3 id="persamaan-otonom">Persamaan Otonom</h3>
+<p>Mari kita lakukan sebuah contoh di mana kita tahu bahwa tidak mungkin untuk menemukan solusi yang sebenarnya. Mari kita perkiraan solusi <span class="arithmatex">\(y' = \sin(y^2)\)</span> untuk setiap kondisi awal <span class="arithmatex">\(y(0)=-3,-2.75,-2.5,...,2.5,2.75\)</span> dan plot semua hasil bersama-sama.</p>
+<p>Perhatikan bahwa <span class="arithmatex">\(y'=0\)</span> ketika <span class="arithmatex">\(y=\pm \sqrt{k \pi}\)</span> untuk <span class="arithmatex">\(k=0,1,2,3,4,...\)</span>. Poin-poin ini disebut titik keseimbangan persamaan dan mewakili solusi status stabil (atau konstanta).</p>
+<pre><code class="language-py">t0 = 0; tf = 3; h = 0.1;
+
+f = lambda y,t: np.sin(y**2)
+
+t = np.arange(t0,tf+h,h)
+
+for y0 in np.arange(-3,3,0.25):
+    y = odeEuler(f,y0,t)
+    plt.plot(t,y,'b')
+
+for k in range(0,3):
+    y_eq = np.sqrt(k*np.pi)
+    plt.plot([t0,tf],[y_eq,y_eq],'r--')
+    plt.plot([t0,tf],[-y_eq,-y_eq],'r--')
+
+plt.grid(True)
+plt.axis([0,3,-3,3.5])
+plt.title(&quot;Equilibrium solutions of $y'=\sin(y^2)$&quot;)
+plt.show()
+</code></pre>
+<p><img alt="Plot Output 3" src="../assets/diferensial_img2.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../01_Pengantar/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Pengantar
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

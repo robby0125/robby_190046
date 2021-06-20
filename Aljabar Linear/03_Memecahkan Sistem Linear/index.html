@@ -1,0 +1,1084 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Memecahkan Sistem Linear - Resume Komputasi Numerik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#memecahkan-sistem-linear" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Resume Komputasi Numerik" class="md-header__button md-logo" aria-label="Resume Komputasi Numerik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Resume Komputasi Numerik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Memecahkan Sistem Linear
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Resume Komputasi Numerik" class="md-nav__button md-logo" aria-label="Resume Komputasi Numerik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Resume Komputasi Numerik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Aljabar Linear
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Aljabar Linear" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Aljabar Linear
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Aljabar%20Linear%20dengan%20SciPy/" class="md-nav__link">
+        Aljabar Linear dengan SciPy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Memecahkan Sistem Linear
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Memecahkan Sistem Linear
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistem-linear" class="md-nav__link">
+    Sistem Linear
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliminasi-gauss" class="md-nav__link">
+    Eliminasi Gauss
+  </a>
+  
+    <nav class="md-nav" aria-label="Eliminasi Gauss">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operasi-baris-dasar" class="md-nav__link">
+    Operasi Baris Dasar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementasi" class="md-nav__link">
+    Implementasi
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+    <nav class="md-nav" aria-label="Contoh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#menemukan-inversi" class="md-nav__link">
+    Menemukan Inversi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memecahkan-sistem" class="md-nav__link">
+    Memecahkan Sistem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Integrasi Numerik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Integrasi Numerik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Integrasi Numerik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/02_Klasifikasi%20Metode%20Integrasi%20Numerik/" class="md-nav__link">
+        Klasifikasi Metode Integrasi Numerik
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/03_Newton-Cotes/" class="md-nav__link">
+        Metode Newton-Cotes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Integrasi%20Numerik/04_Romberd/" class="md-nav__link">
+        Metode Romberg
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Persamaan Diferensial
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Persamaan Diferensial" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Persamaan Diferensial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Persamaan%20Diferensial/01_Pengantar/" class="md-nav__link">
+        Pengantar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Persamaan%20Diferensial/02_Persamaan%20Urutan%20Pertama/" class="md-nav__link">
+        Persamaan Urutan Pertama
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistem-linear" class="md-nav__link">
+    Sistem Linear
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eliminasi-gauss" class="md-nav__link">
+    Eliminasi Gauss
+  </a>
+  
+    <nav class="md-nav" aria-label="Eliminasi Gauss">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operasi-baris-dasar" class="md-nav__link">
+    Operasi Baris Dasar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementasi" class="md-nav__link">
+    Implementasi
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+    <nav class="md-nav" aria-label="Contoh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#menemukan-inversi" class="md-nav__link">
+    Menemukan Inversi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memecahkan-sistem" class="md-nav__link">
+    Memecahkan Sistem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="memecahkan-sistem-linear">Memecahkan Sistem Linear</h1>
+<p>Pertama, kita siapkan beberapa package python yang akan kita gunakan disini:</p>
+<pre><code class="language-py">import numpy as np
+import matplotlib.pyplot as plt
+import scipy.linalg as la
+%matplotlib inline
+</code></pre>
+<h2 id="sistem-linear">Sistem Linear</h2>
+<p>Sistem persamaan linear adalah kumpulan persamaan linear</p>
+<div class="arithmatex">\[
+\begin{align}
+a_{0,0}x_0 + a_{0,1}x_2 + \cdots + a_{0,n}x_n &amp; = b_0 \\
+a_{1,0}x_0 + a_{1,1}x_2 + \cdots + a_{1,n}x_n &amp; = b_1 \\
+&amp; \vdots \\
+a_{m,0}x_0 + a_{m,1}x_2 + \cdots + a_{m,n}x_n &amp; = b_m \\
+\end{align}
+\]</div>
+<p>Dalam notasi matriks, sistem linear adalah <span class="arithmatex">\(A \mathbf{x}= \mathbf{b}\)</span> di mana</p>
+<div class="arithmatex">\[
+A = \begin{bmatrix}
+a_{0,0} &amp; a_{0,1} &amp; \cdots &amp; a_{0,n} \\
+a_{1,0} &amp; a_{1,1} &amp; \cdots &amp; a_{1,n} \\
+\vdots &amp; &amp; &amp; \vdots \\
+a_{m,0} &amp; a_{m,1} &amp; \cdots &amp; a_{m,n} \\
+\end{bmatrix}
+ \ \ , \ \
+\mathbf{x} = \begin{bmatrix}
+x_0 \\ x_1 \\ \vdots \\ x_n
+\end{bmatrix}
+ \ \ , \ \
+\mathbf{b} = \begin{bmatrix}
+b_0 \\ b_1 \\ \vdots \\ b_m
+\end{bmatrix}
+\]</div>
+<h2 id="eliminasi-gauss">Eliminasi Gauss</h2>
+<p>Prosedur umum untuk menyelesaikan sistem persamaan linier disebut eliminasi Gaussian. Idenya adalah untuk melakukan operasi baris dasar untuk mengurangi sistem ke bentuk eselon barisnya dan kemudian memecahkannya.</p>
+<h3 id="operasi-baris-dasar">Operasi Baris Dasar</h3>
+<p>Operasi baris dasar meliputi:</p>
+<ol>
+<li>Tambahkan <span class="arithmatex">\(k\)</span> kali baris <span class="arithmatex">\(j\)</span> ke baris <span class="arithmatex">\(i\)</span>.</li>
+<li>Kalikan baris <span class="arithmatex">\(i\)</span> dengan skalar <span class="arithmatex">\(k\)</span>.</li>
+<li>Tukar baris <span class="arithmatex">\(i\)</span> dan <span class="arithmatex">\(j\)</span>.</li>
+</ol>
+<p>Masing-masing operasi baris dasar adalah hasil perkalian matriks oleh matriks dasar (di sebelah kiri). Untuk menambahkan <span class="arithmatex">\(k\)</span> kali baris <span class="arithmatex">\(i\)</span> ke baris <span class="arithmatex">\(j\)</span> dalam matriks <span class="arithmatex">\(A\)</span>, kita akan mengalikan <span class="arithmatex">\(A\)</span> dengan matriks <span class="arithmatex">\(E\)</span> di mana <span class="arithmatex">\(E\)</span> sama dengan matriks identitas kecuali entri <span class="arithmatex">\(i,j\)</span> adalah <span class="arithmatex">\(E_{i,j} = k\)</span>. Misalnya, jika <span class="arithmatex">\(A\)</span> adalah 3 kali 3 dan kita ingin menambahkan 3 kali baris 2 ke baris 0 (menggunakan 0 pengindeksan) maka</p>
+<div class="arithmatex">\[
+E_1 = \begin{bmatrix}
+1 &amp; 0 &amp; 3 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</div>
+<p>Mari kita verifikasi perhitungannya:</p>
+<pre><code class="language-py">A = np.array([[1,1,2],[-1,3,1],[0,5,2]])
+print(A)
+
+# Output:
+# [[ 1  1  2]
+#  [-1  3  1]
+#  [ 0  5  2]]
+</code></pre>
+<pre><code class="language-py">E1 = np.array([[1,0,3],[0,1,0],[0,0,1]])
+print(E1)
+
+# Output:
+# [[1 0 3]
+#  [0 1 0]
+#  [0 0 1]]
+</code></pre>
+<pre><code class="language-py">E1 @ A
+
+# Output:
+# array([[ 1, 16,  8],
+#        [-1,  3,  1],
+#        [ 0,  5,  2]])
+</code></pre>
+<p>Selanjutnya, untuk menukar baris <span class="arithmatex">\(i\)</span> dan baris <span class="arithmatex">\(j\)</span> dalam matriks <span class="arithmatex">\(A\)</span>, kami mengalikan <span class="arithmatex">\(A\)</span> dengan matriks <span class="arithmatex">\(E\)</span> di mana <span class="arithmatex">\(E\)</span> sama dengan matriks identitas kecuali <span class="arithmatex">\(E_{i,i} = 0\)</span>, <span class="arithmatex">\(E_{j,j} = 0\)</span>, <span class="arithmatex">\(E_{i,j} = 1\)</span>, dan <span class="arithmatex">\(E_{j,i} = 1\)</span>. Misalnya, jika <span class="arithmatex">\(A\)</span> adalah 3 kali 3 dan kita ingin menukar baris 1 dan baris 2 maka</p>
+<div class="arithmatex">\[
+E^3 = \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{bmatrix}
+\]</div>
+<p>Mari kita verifikasi perhitungan:</p>
+<pre><code class="language-py">E3 = np.array([[1,0,0],[0,0,1],[0,1,0]])
+print(E3)
+
+# Output:
+# [[1 0 0]
+#  [0 0 1]
+#  [0 1 0]]
+</code></pre>
+<pre><code class="language-py">E3 @ A
+
+# Output:
+# array([[ 1,  1,  2],
+#        [ 0,  5,  2],
+#        [-1,  3,  1]])
+</code></pre>
+<h3 id="implementasi">Implementasi</h3>
+<p>Mari kita tulis fungsi untuk mengimplementasikan operasi baris dasar. Pertama-tama, mari kita tulis fungsi yang dengan nama add_rows yang mengambil parameter input <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(i\)</span> dan <span class="arithmatex">\(j\)</span> dan mengembalikan array NumPy yang dihasilkan dari menambahkan <span class="arithmatex">\(k\)</span> kali baris <span class="arithmatex">\(j\)</span> ke baris <span class="arithmatex">\(i\)</span> dalam matriks <span class="arithmatex">\(A\)</span>. Jika <span class="arithmatex">\(i=j\)</span>, kemudian katakanlah bahwa fungsi menskalakan baris <span class="arithmatex">\(i\)</span> oleh <span class="arithmatex">\(k+1\)</span> karena ini akan menjadi hasil <span class="arithmatex">\(k\)</span> kali baris <span class="arithmatex">\(i\)</span> ditambahkan ke baris <span class="arithmatex">\(i\)</span>.</p>
+<pre><code class="language-py">def add_row(A,k,i,j):
+    &quot;Tambahkan k kali baris j ke baris i dalam matriks A.&quot;
+    n = A.shape[0]
+    E = np.eye(n)
+    if i == j:
+        E[i,i] = k + 1
+    else:
+        E[i,j] = k
+    return E @ A
+</code></pre>
+<p>Mari kita uji fungsi kita:</p>
+<pre><code class="language-py">M = np.array([[1,1],[3,2]])
+print(M)
+
+# Output:
+# [[1 1]
+#  [3 2]]
+</code></pre>
+<pre><code class="language-py">add_row(M,2,0,1)
+
+# Output:
+# array([[7., 5.],
+#        [3., 2.]])
+</code></pre>
+<pre><code class="language-py">add_row(M,3,1,1)
+
+# Output:
+# array([[ 1.,  1.],
+#        [12.,  8.]])
+</code></pre>
+<p>Mari kita tulis fungsi dengan nama scale_row yang mengambil 3 parameter input <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(k\)</span>, dan <span class="arithmatex">\(i\)</span> dan mengembalikan matriks yang hasil dari <span class="arithmatex">\(k\)</span> kali baris <span class="arithmatex">\(i\)</span> dalam matriks <span class="arithmatex">\(A\)</span>.</p>
+<pre><code class="language-py">def scale_row(A,k,i):
+    &quot;Kalikan baris i dengan k dalam matriks A.&quot;
+    n = A.shape[0]
+    E = np.eye(n)
+    E[i,i] = k
+    return E @ A
+</code></pre>
+<pre><code class="language-py">M = np.array([[3,1],[-2,7]])
+print(M)
+
+# Output:
+# [[ 3  1]
+#  [-2  7]]
+</code></pre>
+<pre><code class="language-py">scale_row(M,3,1)
+
+# Output:
+# array([[ 3.,  1.],
+#        [-6., 21.]])
+</code></pre>
+<pre><code class="language-py">A = np.array([[1,1,1],[1,-1,0]])
+print(A)
+
+# Output:
+# [[ 1  1  1]
+#  [ 1 -1  0]]
+</code></pre>
+<pre><code class="language-py">scale_row(A,5,1)
+
+# Output:
+# array([[ 1.,  1.,  1.],
+#        [ 5., -5.,  0.]])
+</code></pre>
+<p>Mari kita tulis fungsi dengan nama switch_rows yang mengambil 3 parameter input <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(i\)</span>, dan <span class="arithmatex">\(j\)</span> dan mengembalikan matriks hasil pertukaran baris <span class="arithmatex">\(i\)</span> dan <span class="arithmatex">\(j\)</span> dalam matriks <span class="arithmatex">\(A\)</span>.</p>
+<pre><code class="language-py">def switch_rows(A,i,j):
+    &quot;Switch rows i and j in matrix A.&quot;
+    n = A.shape[0]
+    E = np.eye(n)
+    E[i,i] = 0
+    E[j,j] = 0
+    E[i,j] = 1
+    E[j,i] = 1
+    return E @ A
+</code></pre>
+<pre><code class="language-py">A = np.array([[1,1,1],[1,-1,0]])
+print(A)
+
+# Output:
+# [[ 1  1  1]
+#  [ 1 -1  0]]
+</code></pre>
+<pre><code class="language-py">switch_rows(A,0,1)
+
+# Output:
+# array([[ 1., -1.,  0.],
+#        [ 1.,  1.,  1.]])
+</code></pre>
+<h2 id="contoh">Contoh</h2>
+<h3 id="menemukan-inversi">Menemukan Inversi</h3>
+<p>Mari kita terapkan fungsi kita ke matriks augmented <span class="arithmatex">\([M \ | \ I]\)</span> untuk menemukan inversi matriks <span class="arithmatex">\(M\)</span>:</p>
+<pre><code class="language-py">M = np.array([[5,4,2],[-1,2,1],[1,1,1]])
+print(M)
+
+# Output:
+# [[ 5  4  2]
+#  [-1  2  1]
+#  [ 1  1  1]]
+</code></pre>
+<pre><code class="language-py">A = np.hstack([M,np.eye(3)])
+print(A)
+
+# Output:
+# [[ 5.  4.  2.  1.  0.  0.]
+#  [-1.  2.  1.  0.  1.  0.]
+#  [ 1.  1.  1.  0.  0.  1.]]
+</code></pre>
+<pre><code class="language-py">A1 = switch_rows(A,0,2)
+print(A1)
+
+# Output:
+# [[ 1.  1.  1.  0.  0.  1.]
+#  [-1.  2.  1.  0.  1.  0.]
+#  [ 5.  4.  2.  1.  0.  0.]]
+</code></pre>
+<pre><code class="language-py">A2 = add_row(A1,1,1,0)
+print(A2)
+
+# Output:
+# [[1. 1. 1. 0. 0. 1.]
+#  [0. 3. 2. 0. 1. 1.]
+#  [5. 4. 2. 1. 0. 0.]]
+</code></pre>
+<pre><code class="language-py">A3 = add_row(A2,-5,2,0)
+print(A3)
+
+# Output:
+# [[ 1.  1.  1.  0.  0.  1.]
+#  [ 0.  3.  2.  0.  1.  1.]
+#  [ 0. -1. -3.  1.  0. -5.]]
+</code></pre>
+<pre><code class="language-py">A4 = switch_rows(A3,1,2)
+print(A4)
+
+# Output:
+# [[ 1.  1.  1.  0.  0.  1.]
+#  [ 0. -1. -3.  1.  0. -5.]
+#  [ 0.  3.  2.  0.  1.  1.]]
+</code></pre>
+<pre><code class="language-py">A5 = scale_row(A4,-1,1)
+print(A5)
+
+# Output:
+# [[ 1.  1.  1.  0.  0.  1.]
+#  [ 0.  1.  3. -1.  0.  5.]
+#  [ 0.  3.  2.  0.  1.  1.]]
+</code></pre>
+<pre><code class="language-py">A6 = add_row(A5,-3,2,1)
+print(A6)
+
+# Output:
+# [[  1.   1.   1.   0.   0.   1.]
+#  [  0.   1.   3.  -1.   0.   5.]
+#  [  0.   0.  -7.   3.   1. -14.]]
+</code></pre>
+<pre><code class="language-py">A7 = scale_row(A6,-1/7,2)
+print(A7)
+
+# Output:
+# [[ 1.          1.          1.          0.          0.          1.        ]
+#  [ 0.          1.          3.         -1.          0.          5.        ]
+#  [ 0.          0.          1.         -0.42857143 -0.14285714  2.        ]]
+</code></pre>
+<pre><code class="language-py">A8 = add_row(A7,-3,1,2)
+print(A8)
+
+# Output:
+# [[ 1.          1.          1.          0.          0.          1.        ]
+#  [ 0.          1.          0.          0.28571429  0.42857143 -1.        ]
+#  [ 0.          0.          1.         -0.42857143 -0.14285714  2.        ]]
+</code></pre>
+<pre><code class="language-py">A9 = add_row(A8,-1,0,2)
+print(A9)
+
+# Output:
+# [[ 1.          1.          0.          0.42857143  0.14285714 -1.        ]
+#  [ 0.          1.          0.          0.28571429  0.42857143 -1.        ]
+#  [ 0.          0.          1.         -0.42857143 -0.14285714  2.        ]]
+</code></pre>
+<pre><code class="language-py">A10 = add_row(A9,-1,0,1)
+print(A10)
+
+# Output:
+# [[ 1.          0.          0.          0.14285714 -0.28571429  0.        ]
+#  [ 0.          1.          0.          0.28571429  0.42857143 -1.        ]
+#  [ 0.          0.          1.         -0.42857143 -0.14285714  2.        ]]
+</code></pre>
+<p>Mari kita verifikasi bahwa kita menemukan <span class="arithmatex">\(M^{-1}\)</span> terbalik dengan benar:</p>
+<pre><code class="language-py">Minv = A10[:,3:]
+print(Minv)
+
+# Output:
+# [[ 0.14285714 -0.28571429  0.        ]
+#  [ 0.28571429  0.42857143 -1.        ]
+#  [-0.42857143 -0.14285714  2.        ]]
+</code></pre>
+<pre><code class="language-py">result = Minv @ M
+print(result)
+
+# Output:
+# [[ 1.00000000e+00  4.44089210e-16  2.22044605e-16]
+#  [-6.66133815e-16  1.00000000e+00 -2.22044605e-16]
+#  [ 0.00000000e+00  0.00000000e+00  1.00000000e+00]]
+</code></pre>
+<p>Berhasil! Kita dapat melihat hasilnya lebih jelas jika kita membulatkan ke 15 tempat desimal:</p>
+<pre><code class="language-py">np.round(result,15)
+
+# Output:
+# array([[ 1.e+00,  0.e+00,  0.e+00],
+#        [-1.e-15,  1.e+00, -0.e+00],
+#        [ 0.e+00,  0.e+00,  1.e+00]])
+</code></pre>
+<h3 id="memecahkan-sistem">Memecahkan Sistem</h3>
+<p>Mari kita gunakan fungsi kita untuk melakukan eliminasi Gaussian dan memecahkan sistem persamaan linier <span class="arithmatex">\(A \mathbf{x} = \mathbf{b}\)</span>.</p>
+<pre><code class="language-py">A = np.array([[6,15,1],[8,7,12],[2,7,8]])
+print(A)
+
+# Output:
+# [[ 6 15  1]
+#  [ 8  7 12]
+#  [ 2  7  8]]
+</code></pre>
+<pre><code class="language-py">b = np.array([[2],[14],[10]])
+print(b)
+
+# Output:
+# [[ 2]
+#  [14]
+#  [10]]
+</code></pre>
+<p>Membentuk matriks augmented <span class="arithmatex">\(M\)</span>:</p>
+<pre><code class="language-py">M = np.hstack([A,b])
+print(M)
+
+# Output:
+# [[ 6 15  1  2]
+#  [ 8  7 12 14]
+#  [ 2  7  8 10]]
+</code></pre>
+<p>Melakukan operasi baris:</p>
+<pre><code class="language-py">M1 = scale_row(M,1/6,0)
+print(M1)
+
+# Output:
+# [[ 1.          2.5         0.16666667  0.33333333]
+#  [ 8.          7.         12.         14.        ]
+#  [ 2.          7.          8.         10.        ]]
+</code></pre>
+<pre><code class="language-py">M2 = add_row(M1,-8,1,0)
+print(M2)
+
+# Output:
+# [[  1.           2.5          0.16666667   0.33333333]
+#  [  0.         -13.          10.66666667  11.33333333]
+#  [  2.           7.           8.          10.        ]]
+</code></pre>
+<pre><code class="language-py">M3 = add_row(M2,-2,2,0)
+print(M3)
+
+# Output:
+# [[  1.           2.5          0.16666667   0.33333333]
+#  [  0.         -13.          10.66666667  11.33333333]
+#  [  0.           2.           7.66666667   9.33333333]]
+</code></pre>
+<pre><code class="language-py">M4 = scale_row(M3,-1/13,1)
+print(M4)
+
+# Output:
+# [[ 1.          2.5         0.16666667  0.33333333]
+#  [ 0.          1.         -0.82051282 -0.87179487]
+#  [ 0.          2.          7.66666667  9.33333333]]
+</code></pre>
+<pre><code class="language-py">M5 = add_row(M4,-2,2,1)
+print(M5)
+
+# Output:
+# [[ 1.          2.5         0.16666667  0.33333333]
+#  [ 0.          1.         -0.82051282 -0.87179487]
+#  [ 0.          0.          9.30769231 11.07692308]]
+</code></pre>
+<pre><code class="language-py">M6 = scale_row(M5,1/M5[2,2],2)
+print(M6)
+
+# Output:
+# [[ 1.          2.5         0.16666667  0.33333333]
+#  [ 0.          1.         -0.82051282 -0.87179487]
+#  [ 0.          0.          1.          1.19008264]]
+</code></pre>
+<pre><code class="language-py">M7 = add_row(M6,-M6[1,2],1,2)
+print(M7)
+
+# Output:
+# [[1.         2.5        0.16666667 0.33333333]
+#  [0.         1.         0.         0.1046832 ]
+#  [0.         0.         1.         1.19008264]]
+</code></pre>
+<pre><code class="language-py">M8 = add_row(M7,-M7[0,2],0,2)
+print(M8)
+
+# Output:
+# [[1.         2.5        0.         0.13498623]
+#  [0.         1.         0.         0.1046832 ]
+#  [0.         0.         1.         1.19008264]]
+</code></pre>
+<pre><code class="language-py">M9 = add_row(M8,-M8[0,1],0,1)
+print(M9)
+
+# Output:
+# [[ 1.          0.          0.         -0.12672176]
+#  [ 0.          1.          0.          0.1046832 ]
+#  [ 0.          0.          1.          1.19008264]]
+</code></pre>
+<p>Berhasil! Solusi dari <span class="arithmatex">\(Ax=b\)</span> adalah:</p>
+<pre><code class="language-py">x = M9[:,3].reshape(3,1)
+print(x)
+
+# Output:
+# [[-0.12672176]
+#  [ 0.1046832 ]
+#  [ 1.19008264]]
+</code></pre>
+<p>Atau, kita bisa melakukannya dengan cara yang mudah...</p>
+<pre><code class="language-py">x = la.solve(A,b)
+print(x)
+
+# Output:
+# [[-0.12672176]
+#  [ 0.1046832 ]
+#  [ 1.19008264]]
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../02_Aljabar%20Linear%20dengan%20SciPy/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Aljabar Linear dengan SciPy
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../Integrasi%20Numerik/01_Pengantar/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pengantar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
